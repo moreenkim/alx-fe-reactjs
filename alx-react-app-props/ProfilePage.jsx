@@ -1,6 +1,8 @@
 import UserInfo from './UserInfo';
 
-function ProfilePage({ userData }) {
+function ProfilePage() {
+    const userData = useContext(UserContext);
+
   return <UserInfo userData={userData} />;
 }
 
