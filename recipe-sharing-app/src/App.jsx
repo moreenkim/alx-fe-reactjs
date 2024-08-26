@@ -7,7 +7,7 @@ import AddRecipeForm from './components/AddRecipeForm';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import RecipeDetails from './components/RecipeDetails';
 import EditRecipeForm from './components/EditRecipeForm';
-import FavoritesList from './components/FavouriteList';
+import FavoritesList from './components/FavouritesList';
 import RecommendationsList from './components/RecommendationsList'
 
 function App() {
