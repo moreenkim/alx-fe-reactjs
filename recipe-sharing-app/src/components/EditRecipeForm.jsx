@@ -19,8 +19,8 @@ const EditRecipeForm = () => {
     return <div>Recipe not found</div>;
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
     const updatedRecipe = {
       ...recipe,
       name,
