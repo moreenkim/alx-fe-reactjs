@@ -1,12 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import useRecipeStore from '../path/to/your/store';
 
 const RecipeList = () => {
   const filteredRecipes = useRecipeStore((state) => state.filteredRecipes);
-  const updateSearchTerm = useRecipeStore((state) => state.updateSearchTerm);
+  const setSearchTerm = useRecipeStore((state) => state.setSearchTerm);
 
   const handleSearch = (e) => {
-    updateSearchTerm(e.target.value); // Trigger filtering when the search term changes
+    setSearchTerm(e.target.value);
   };
 
   return (
@@ -19,7 +20,11 @@ const RecipeList = () => {
       <ul>
         {filteredRecipes.length > 0 ? (
           filteredRecipes.map((recipe) => (
-            <li key={recipe.id}>{recipe.name}</li>
+            <li key={recipe.id}>
+              <Link to={`/recipe/${recipe.id}`}>
+                {recipe.name}
+              </Link>
+            </li>
           ))
         ) : (
           <li>No recipes found</li>
