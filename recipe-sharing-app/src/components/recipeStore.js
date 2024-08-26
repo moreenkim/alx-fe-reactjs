@@ -4,23 +4,21 @@ const useRecipeStore = create((set, get) => ({
   recipes: [],
   searchTerm: '',
   filteredRecipes: [],
+  favorites: [],
 
-  // Action to add a new recipe
+  // Existing actions...
   addRecipe: (newRecipe) => set((state) => ({
     recipes: [...state.recipes, newRecipe],
     filteredRecipes: get().computeFilteredRecipes(newRecipe, state.searchTerm),
   })),
-
-  // Action to delete a recipe by its id
   deleteRecipe: (id) => set((state) => {
     const updatedRecipes = state.recipes.filter((recipe) => recipe.id !== id);
     return {
       recipes: updatedRecipes,
       filteredRecipes: get().computeFilteredRecipes(updatedRecipes, state.searchTerm),
+      favorites: state.favorites.filter((favorite) => favorite.id !== id),
     };
   }),
-
-  // Action to update a recipe by its id
   updateRecipe: (updatedRecipe) => set((state) => {
     const updatedRecipes = state.recipes.map((recipe) =>
       recipe.id === updatedRecipe.id ? updatedRecipe : recipe
@@ -30,18 +28,30 @@ const useRecipeStore = create((set, get) => ({
       filteredRecipes: get().computeFilteredRecipes(updatedRecipes, state.searchTerm),
     };
   }),
-
-  // Action to set recipes
   setRecipes: (recipes) => set({ 
     recipes, 
     filteredRecipes: get().computeFilteredRecipes(recipes, get().searchTerm),
   }),
-
-  // Action to set the search term and update filtered recipes
   setSearchTerm: (term) => set({
     searchTerm: term,
     filteredRecipes: get().computeFilteredRecipes(get().recipes, term),
   }),
+  addFavorite: (recipe) => set((state) => ({
+    favorites: [...state.favorites, recipe]
+  })),
+  removeFavorite: (id) => set((state) => ({
+    favorites: state.favorites.filter((favorite) => favorite.id !== id)
+  })),
+
+  // Action to get recommendations based on favorites
+  getRecommendations: () => {
+    const { recipes, favorites } = get();
+    if (favorites.length === 0) return [];
+
+    // Simple recommendation logic: recommend recipes that are not in favorites
+    const favoriteIds = new Set(favorites.map(recipe => recipe.id));
+    return recipes.filter(recipe => !favoriteIds.has(recipe.id));
+  },
 
   // Computed property to filter recipes based on the search term
   computeFilteredRecipes: (recipes = get().recipes, searchTerm = get().searchTerm) => {

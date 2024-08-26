@@ -7,7 +7,8 @@ import AddRecipeForm from './components/AddRecipeForm';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import RecipeDetails from './components/RecipeDetails';
 import EditRecipeForm from './components/EditRecipeForm';
-
+import FavoritesList from './components/FavouriteList';
+import RecommendationsList from './components/RecommendationsList'
 
 function App() {
 
@@ -22,16 +23,16 @@ function App() {
         </div>
          <AddRecipeForm />
       </div>
-      <div>
-      <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/recipe/:id" element={<RecipeDetails />} />
-        <Route path="/recipe/:id/edit" element={<EditRecipeForm />} />
-
-      </Routes>
-    </Router>
-      </div>
+      <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/recipe/:id" element={<RecipeDetails />} />
+            <Route path="/edit-recipe/:id" element={<EditRecipeForm />} />
+            <Route path="/delete-recipe/:id" element={<DeleteRecipeButton />} />
+            <Route path="/favorites" element={<FavoritesList />} />
+            <Route path="/recommendations" element={<RecommendationsList />} />
+          </Routes>
+        </main>
     </div>
   );
 }
