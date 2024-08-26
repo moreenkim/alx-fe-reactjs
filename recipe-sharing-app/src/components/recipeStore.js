@@ -37,8 +37,8 @@ const useRecipeStore = create((set, get) => ({
     filteredRecipes: get().computeFilteredRecipes(recipes, get().searchTerm),
   }),
 
-  // Action to update the search term
-  updateSearchTerm: (term) => set({
+  // Action to set the search term and update filtered recipes
+  setSearchTerm: (term) => set({
     searchTerm: term,
     filteredRecipes: get().computeFilteredRecipes(get().recipes, term),
   }),
