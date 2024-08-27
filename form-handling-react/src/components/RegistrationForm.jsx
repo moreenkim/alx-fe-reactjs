@@ -24,19 +24,19 @@ const FormikForm = () => {
         <Form>
           <div>
             <label htmlFor="username">Username:</label>
-            <Field type="text" id="username" name="username" />
+            <Field type="text" id="username" name="username" value={username} />
             <ErrorMessage name="username" component="p" />
           </div>
 
           <div>
             <label htmlFor="email">Email:</label>
-            <Field type="email" id="email" name="email" />
+            <Field type="email" id="email" name="email"  value={email}/>
             <ErrorMessage name="email" component="p" />
           </div>
 
           <div>
             <label htmlFor="password">Password:</label>
-            <Field type="password" id="password" name="password" />
+            <Field type="password" id="password" name="password" value={password} />
             <ErrorMessage name="password" component="p" />
           </div>
 
