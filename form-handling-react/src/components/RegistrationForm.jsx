@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
@@ -11,6 +11,9 @@ const validationSchema = Yup.object({
 });
 
 const FormikForm = () => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   return (
     <Formik
       initialValues={{ username: "", email: "", password: "" }}
@@ -30,13 +33,18 @@ const FormikForm = () => {
 
           <div>
             <label htmlFor="email">Email:</label>
-            <Field type="email" id="email" name="email"  value={email}/>
+            <Field type="email" id="email" name="email" value={email} />
             <ErrorMessage name="email" component="p" />
           </div>
 
           <div>
             <label htmlFor="password">Password:</label>
-            <Field type="password" id="password" name="password" value={password} />
+            <Field
+              type="password"
+              id="password"
+              name="password"
+              value={password}
+            />
             <ErrorMessage name="password" component="p" />
           </div>
 
