@@ -14,6 +14,25 @@ const FormikForm = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Validation logic
+    const newErrors = {};
+    if (!username) newErrors.username = 'Username is required';
+    if (!email) newErrors.email = 'Email is required';
+    if (!password) newErrors.password = 'Password is required';
+
+    if (Object.keys(newErrors).length > 0) {
+        setErrors(newErrors);
+    } else {
+        setErrors({});
+        // Form submission logic (e.g., send data to an API)
+        console.log({ username, email, password });
+    }
+};
   return (
     <Formik
       initialValues={{ username: "", email: "", password: "" }}
