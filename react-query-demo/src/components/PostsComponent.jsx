@@ -8,9 +8,16 @@ const fetchPosts = async () => {
 };
 
 const PostsComponent = () => {
-  const { data: posts, error, isLoading, isError } = useQuery({
+  const {
+    data: posts,
+    error,
+    isLoading,
+    isError,
+    refetch, // Refetch function provided by React Query
+  } = useQuery({
     queryKey: ['posts'],
     queryFn: fetchPosts,
+    staleTime: 5000, // Data considered fresh for 5 seconds
   });
 
   if (isLoading) {
@@ -24,6 +31,7 @@ const PostsComponent = () => {
   return (
     <div>
       <h1>Posts</h1>
+      <button onClick={() => refetch()}>Refetch Posts</button> {/* Refetch button */}
       <ul>
         {posts.map((post) => (
           <li key={post.id}>
