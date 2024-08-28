@@ -14,10 +14,14 @@ const PostsComponent = () => {
     isLoading,
     isError,
     refetch, // Refetch function provided by React Query
+    isFetching, // Indicates if the data is being fetched
   } = useQuery({
     queryKey: ['posts'],
     queryFn: fetchPosts,
-    staleTime: 5000, // Data considered fresh for 5 seconds
+    staleTime: 5000, // Data is considered fresh for 5 seconds
+    cacheTime: 1000 * 60 * 10, // Data remains in cache for 10 minutes
+    refetchOnWindowFocus: true, // Refetch data when window gains focus
+    keepPreviousData: true, // Keep previous data while fetching new data
   });
 
   if (isLoading) {
@@ -32,6 +36,7 @@ const PostsComponent = () => {
     <div>
       <h1>Posts</h1>
       <button onClick={() => refetch()}>Refetch Posts</button> {/* Refetch button */}
+      {isFetching && !isLoading && <div>Updating...</div>} {/* Show fetching state */}
       <ul>
         {posts.map((post) => (
           <li key={post.id}>
