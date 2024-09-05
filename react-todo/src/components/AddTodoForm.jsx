@@ -1,61 +1,27 @@
 import React, { useState } from 'react';
-import AddTodoForm from './AddTodoForm';
 
-const TodoList = () => {
-  const [todos, setTodos] = useState([]);
+const AddTodoForm = ({ addTodo }) => {
+  const [inputValue, setInputValue] = useState('');
 
-  const addTodo = (text) => {
-    const newTodo = {
-      id: Date.now(),
-      text,
-      isCompleted: false,
-    };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (inputValue.trim() === '') return;
 
-    setTodos([...todos, newTodo]);
-  };
-
-  const deleteTodo = (id) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
-  };
-
-  const toggleCompletion = (id) => {
-    setTodos(
-      todos.map((todo) =>
-        todo.id === id ? { ...todo, isCompleted: !todo.isCompleted } : todo
-      )
-    );
+    addTodo(inputValue);
+    setInputValue('');
   };
 
   return (
-    <div>
-      <h1>Todo List</h1>
-      <AddTodoForm addTodo={addTodo} />
-      <ul>
-        {todos.map((todo) => (
-          <TodoItem
-            key={todo.id}
-            todo={todo}
-            deleteTodo={deleteTodo}
-            toggleCompletion={toggleCompletion}
-          />
-        ))}
-      </ul>
-    </div>
-  );
-};
-
-const TodoItem = ({ todo, deleteTodo, toggleCompletion }) => {
-  return (
-    <li style={{ textDecoration: todo.isCompleted ? 'line-through' : 'none' }}>
+    <form onSubmit={handleSubmit}>
       <input
-        type="checkbox"
-        checked={todo.isCompleted}
-        onChange={() => toggleCompletion(todo.id)}
+        type="text"
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+        placeholder="Add a new todo"
       />
-      {todo.text}
-      <button onClick={() => deleteTodo(todo.id)}>Delete</button>
-    </li>
+      <button type="submit">Add Todo</button>
+    </form>
   );
 };
 
-export default TodoList;
+export default AddTodoForm;

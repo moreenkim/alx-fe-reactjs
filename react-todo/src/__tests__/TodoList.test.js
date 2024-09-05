@@ -1,8 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import TodoList from './TodoList';
-
+import TodoList from '../components/TodoList';
 test('renders the TodoList component with initial todos', () => {
   const demoTodos = [
     { id: 1, text: 'Learn React', isCompleted: false },
