@@ -1,6 +1,6 @@
 function UserProfile() {
     return (
-      <div className="user-profile hover:shadow-xl transition-transform duration-300 ease-in-out bg-gray-100  md:text-xl md:max-w-sm md:p-8 sm:w-24 sm:h-24 md:w-36 md:h-36 sm:p-4p-4 sm:p-8 max-w-xs sm:max-w-sm mx-auto my-20 rounded-lg shadow-lg">
+      <div className="user-profile hover:scale-110 transition-transform duration-300 ease-in-out bg-gray-100  md:text-xl md:max-w-sm md:p-8 sm:w-24 sm:h-24 md:w-36 md:h-36 sm:p-4p-4 sm:p-8 max-w-xs sm:max-w-sm mx-auto my-20 rounded-lg shadow-lg">
         <img
           src="https://via.placeholder.com/150"
           alt="User"
