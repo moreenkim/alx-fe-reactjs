@@ -1,35 +1,32 @@
 {
-    "recipes": [
-      {
-        "id": 1,
-        "title": "Spaghetti Bolognese",
-        "summary": "A rich and hearty spaghetti with beef bolognese sauce.",
-        "image": "https://example.com/images/spaghetti-bolognese.jpg"
-      },
-      {
-        "id": 2,
-        "title": "Chicken Tikka Masala",
-        "summary": "Grilled chicken simmered in a creamy tomato curry sauce.",
-        "image": "https://example.com/images/chicken-tikka-masala.jpg"
-      },
-      {
-        "id": 3,
-        "title": "Avocado Toast",
-        "summary": "Creamy mashed avocado spread on toasted bread with toppings.",
-        "image": "https://example.com/images/avocado-toast.jpg"
-      },
-      {
-        "id": 4,
-        "title": "Caesar Salad",
-        "summary": "A classic Caesar salad with crunchy croutons and a creamy dressing.",
-        "image": "https://example.com/images/caesar-salad.jpg"
-      },
-      {
-        "id": 5,
-        "title": "Pancakes",
-        "summary": "Fluffy pancakes served with syrup and butter.",
-        "image": "https://example.com/images/pancakes.jpg"
-      }
-    ]
-  }
-  
+  "recipes": [
+    {
+      "id": 1,
+      "title": "Spaghetti Bolognese",
+      "image": "https://example.com/images/spaghetti-bolognese.jpg",
+      "ingredients": [
+        "200g spaghetti",
+        "100g ground beef",
+        "1 onion, chopped",
+        "2 garlic cloves, minced",
+        "400g canned tomatoes",
+        "Salt and pepper to taste"
+      ],
+      "instructions": "1. Cook the spaghetti according to package instructions. 2. Heat olive oil in a pan and sauté onions and garlic. 3. Add ground beef and cook until browned. 4. Pour in the canned tomatoes and simmer for 15 minutes. 5. Season with salt and pepper. 6. Serve the sauce over the spaghetti."
+    },
+    {
+      "id": 2,
+      "title": "Chicken Tikka Masala",
+      "image": "https://example.com/images/chicken-tikka-masala.jpg",
+      "ingredients": [
+        "500g chicken breast",
+        "1 cup yogurt",
+        "2 tbsp tikka masala paste",
+        "1 onion, chopped",
+        "400g canned tomatoes",
+        "200ml coconut milk"
+      ],
+      "instructions": "1. Marinate chicken in yogurt and tikka masala paste for 1 hour. 2. Sauté onions in a pan, add chicken, and cook until browned. 3. Add canned tomatoes and simmer for 10 minutes. 4. Stir in coconut milk and cook for 5 more minutes. Serve with rice."
+    }
+  ]
+}
