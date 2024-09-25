@@ -1,0 +1,35 @@
+{
+    "recipes": [
+      {
+        "id": 1,
+        "title": "Spaghetti Bolognese",
+        "summary": "A rich and hearty spaghetti with beef bolognese sauce.",
+        "image": "https://example.com/images/spaghetti-bolognese.jpg"
+      },
+      {
+        "id": 2,
+        "title": "Chicken Tikka Masala",
+        "summary": "Grilled chicken simmered in a creamy tomato curry sauce.",
+        "image": "https://example.com/images/chicken-tikka-masala.jpg"
+      },
+      {
+        "id": 3,
+        "title": "Avocado Toast",
+        "summary": "Creamy mashed avocado spread on toasted bread with toppings.",
+        "image": "https://example.com/images/avocado-toast.jpg"
+      },
+      {
+        "id": 4,
+        "title": "Caesar Salad",
+        "summary": "A classic Caesar salad with crunchy croutons and a creamy dressing.",
+        "image": "https://example.com/images/caesar-salad.jpg"
+      },
+      {
+        "id": 5,
+        "title": "Pancakes",
+        "summary": "Fluffy pancakes served with syrup and butter.",
+        "image": "https://example.com/images/pancakes.jpg"
+      }
+    ]
+  }
+  
