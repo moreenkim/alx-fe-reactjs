@@ -4,39 +4,48 @@ const AddRecipeForm = () => {
   const [title, setTitle] = useState('');
   const [ingredients, setIngredients] = useState('');
   const [steps, setSteps] = useState('');
-  const [errors, setErrors] = useState('');
+  const [errors, setErrors] = useState('');  // State for storing error messages
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // Simple validation
+  // Validation function
+  const validate = () => {
     if (!title || !ingredients || !steps) {
-      setErrors('All fields are required.');
-      return;
+      return 'All fields are required.';
     }
 
     const ingredientsList = ingredients.split('\n').filter((ingredient) => ingredient.trim() !== '');
     if (ingredientsList.length < 2) {
-      setErrors('Please provide at least two ingredients.');
+      return 'Please provide at least two ingredients.';
+    }
+
+    return null;  // Return null if there are no validation errors
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    // Run validation
+    const validationError = validate();
+    if (validationError) {
+      setErrors(validationError);  // Set error state if validation fails
       return;
     }
 
-    // If validation passes, proceed with form submission
+    // If validation passes, create new recipe object
     const newRecipe = {
       title,
-      ingredients: ingredientsList,
+      ingredients: ingredients.split('\n').map(ingredient => ingredient.trim()), // Split ingredients by line and trim spaces
       steps,
     };
 
-    console.log('Submitted Recipe:', newRecipe);
-    setSubmitted(true);
+    console.log('Submitted Recipe:', newRecipe);  // Handle form submission (e.g., save to API or state)
+    setSubmitted(true);  // Indicate that the recipe was submitted
 
     // Reset form fields
     setTitle('');
     setIngredients('');
     setSteps('');
-    setErrors('');
+    setErrors('');  // Clear errors on successful submission
   };
 
   return (
@@ -82,7 +91,7 @@ const AddRecipeForm = () => {
         </div>
 
         {/* Error Message */}
-        {errors && <div className="text-red-500 mb-4 text-sm">{errors}</div>}
+        {errors && <div className="text-red-500 mb-4 text-sm">{errors}</div>}  {/* Display errors if any */}
 
         {/* Submit Button */}
         <div className="text-center">
